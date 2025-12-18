@@ -27,11 +27,14 @@
 
 	function formatDate(dateString) {
 		if (!dateString) {
-			return 'N/A';
+			return null;
 		}
 
 		try {
 			const date = new Date(dateString);
+			if (isNaN(date.getTime())) {
+				return null;
+			}
 			return date.toLocaleString('en-US', {
 				month: 'short',
 				day: 'numeric',
@@ -41,7 +44,7 @@
 				timeZoneName: 'short'
 			});
 		} catch (error) {
-			return dateString;
+			return null;
 		}
 	}
 
@@ -73,7 +76,11 @@
 
 		statusDetails.innerHTML = '';
 
-		if (data.countdown !== null && data.countdown !== undefined) {
+		if (isLive) {
+			return;
+		}
+
+		if (data.countdown !== null && data.countdown !== undefined && data.countdown > 0) {
 			const countdownItem = document.createElement('div');
 			countdownItem.className = 'detail-item';
 			countdownItem.innerHTML = '<span class="detail-label">Countdown:</span><span class="detail-value">' + formatTime(data.countdown) + '</span>';
@@ -81,17 +88,23 @@
 		}
 
 		if (data.estimatedCompletion) {
-			const completionItem = document.createElement('div');
-			completionItem.className = 'detail-item';
-			completionItem.innerHTML = '<span class="detail-label">Estimated Completion:</span><span class="detail-value">' + formatDate(data.estimatedCompletion) + '</span>';
-			statusDetails.appendChild(completionItem);
+			const formattedDate = formatDate(data.estimatedCompletion);
+			if (formattedDate) {
+				const completionItem = document.createElement('div');
+				completionItem.className = 'detail-item';
+				completionItem.innerHTML = '<span class="detail-label">Estimated Completion:</span><span class="detail-value">' + formattedDate + '</span>';
+				statusDetails.appendChild(completionItem);
+			}
 		}
 
 		if (data.scheduledMaintenance) {
-			const scheduledItem = document.createElement('div');
-			scheduledItem.className = 'detail-item';
-			scheduledItem.innerHTML = '<span class="detail-label">Scheduled Maintenance:</span><span class="detail-value">' + formatDate(data.scheduledMaintenance) + '</span>';
-			statusDetails.appendChild(scheduledItem);
+			const formattedDate = formatDate(data.scheduledMaintenance);
+			if (formattedDate) {
+				const scheduledItem = document.createElement('div');
+				scheduledItem.className = 'detail-item';
+				scheduledItem.innerHTML = '<span class="detail-label">Scheduled Maintenance:</span><span class="detail-value">' + formattedDate + '</span>';
+				statusDetails.appendChild(scheduledItem);
+			}
 		}
 	}
 
