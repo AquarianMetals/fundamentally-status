@@ -1,6 +1,6 @@
 {
-  "status": "live",
-  "message": "Woo!",
+  "status": "maintenance",
+  "message": "Oof... server test!",
   "countdown": null,
   "estimatedCompletion": null,
   "scheduledMaintenance": {
