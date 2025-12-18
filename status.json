@@ -1,7 +1,10 @@
 {
-  "status": "live",
-  "message": "test",
+  "status": "pending",
+  "message": "Test Message",
   "countdown": null,
   "estimatedCompletion": null,
-  "scheduledMaintenance": null
+  "scheduledMaintenance": {
+    "startTime": "2025-12-20T03:07:00.000Z",
+    "duration": 3600
+  }
 }
