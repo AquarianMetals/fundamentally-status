@@ -1,11 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Fundamentally Status</title>
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-	<h1>Status Endpoint</h1>
-	<p>Status JSON available at: <a href="/status.json">/status.json</a></p>
+	<div class="scanlines"></div>
+	
+	<div class="status-container">
+		<header class="status-header">
+			<div class="logo-container">
+				<img src="assets/images/pheonix_purple.webp" alt="Fundamentally Phoenix Logo" class="logo-image" />
+				<span class="text-logo montserrat-font">FUNDAMENTALLY</span>
+			</div>
+		</header>
+
+		<main class="status-main">
+			<section class="status-section">
+				<div class="neon-border">
+					<div class="status-content-box">
+						<div class="status-indicator-wrapper">
+							<div class="status-pulse" id="statusPulse"></div>
+							<div class="status-icon" id="statusIcon"></div>
+						</div>
+						<h1 class="status-title" id="statusTitle">Checking Status...</h1>
+						<p class="status-message" id="statusMessage"></p>
+						
+						<div class="status-details" id="statusDetails"></div>
+					</div>
+				</div>
+			</section>
+
+			<section class="navigation-section">
+				<a href="https://fundamentally.xyz" class="primary-button" target="_blank" rel="noopener">
+					Visit <span class="text-logo montserrat-font">FUNDAMENTALLY</span>
+				</a>
+			</section>
+		</main>
+
+		<div class="synthwave-footer">
+			<div class="grid-lines"></div>
+			<div class="sun"></div>
+		</div>
+	</div>
+
+	<script src="script.js"></script>
 </body>
 </html>
-
